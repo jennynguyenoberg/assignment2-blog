@@ -3,26 +3,10 @@ import Link from "next/link";
 import styles from "./sidebar.module.css";
 import classNames from "classnames";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
-
-const navItems = {
-  "/": {
-    name: "Home",
-  },
-  "/about": {
-    name: "About",
-  },
-  "/blog": {
-    name: "Blog",
-  },
-  "/create-post": {
-    name: "Create post",
-  },
-  "/login": {
-    name: "Login",
-  },
-};
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+  const router = useRouter();
   const supabaseClient = useSupabaseClient();
   const user = useUser();
 
@@ -52,9 +36,9 @@ export default function Navbar() {
     "/logout": {
       name: "Logout",
       requiresAuth: true,
-      onClick: async() => {
+      onClick: async () => {
         await supabaseClient.auth.signOut();
-        console.log("Clicked");
+        router.push("/login");
       },
     },
   };
