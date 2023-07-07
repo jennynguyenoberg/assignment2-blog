@@ -6,21 +6,22 @@ export const getPosts = async () => {
   //Handle get all posts
   const { data, error, status } = await supabase.from("posts")
     .select();
+  
   return { data, error, status };
 };
 
 export const getPost = async({ slug }) => {
-  //Handle add post here
   const { data, error, status } = await supabase
-    .from("posts")
-    .select("*")
-    .single()
-    .eq("slug", slug);
+  .from("posts")
+  .select("*")
+  .single()
+  .eq("slug", slug);
   
   return { data, error, status };
 };
 
 export const addPost = async (_, { arg: newPost }) => {
+  //Handle add post here
   let image = "";
 
   if (newPost?.image) {
@@ -51,6 +52,7 @@ export const removePost = async (_, { arg: deletedPost }) => {
 };
 
 export const editPost = async (_, { arg: updatedPost }) => {
+  //Handle remove post here
   let image = updatedPost?.image ?? "";
 
   const isNewImage = typeof image === "object" && image !== null;
