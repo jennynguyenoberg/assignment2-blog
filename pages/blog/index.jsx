@@ -18,7 +18,7 @@ export default function Blog() {
         >
           <div className="w-full flex flex-col">
             <p>{post.title}</p>
-            <time className={styles.date}>{post.createdAt}</time>
+            <time className={styles.date}>{post.created_at}</time>
           </div>
         </Link>
       ))}

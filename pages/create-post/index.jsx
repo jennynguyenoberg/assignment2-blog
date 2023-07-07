@@ -19,7 +19,9 @@ export default function CreatePost() {
       title: titleInput,
       slug,
       user_id: user.id,
+      image,
     };
+
     const { error } = await addPostTrigger(newPost);
 
     if (!error) {
@@ -28,10 +30,12 @@ export default function CreatePost() {
   };
 
   return (
-    <BlogEditor
-      heading="Create post"
-      onSubmit={handleOnSubmit}
-      buttonText="Upload post"
-    />
+    <>
+      <BlogEditor
+        heading="Create post"
+        onSubmit={handleOnSubmit}
+        buttonText="Upload post"
+      />
+    </>
   );
 }

@@ -9,16 +9,16 @@ import BlogImageBanner from "@components/blog-image-banner";
 import useSWR  from "swr"
 import useSWRMutation from "swr/mutation"; 
 
-import { editPost, removePost, getPost, postCacheKey } from "@/api-routes/posts";
+import { editPost, removePost, getPost, postsCacheKey } from "@/api-routes/posts";
 
 export default function BlogPost() {
-  const { trigger: deletePostTrigger } = useSWRMutation(postCacheKey, removePost, {
+  const { trigger: deletePostTrigger } = useSWRMutation(postsCacheKey, removePost, {
   });
 
   const router = useRouter();
   const { slug } = router.query;
 
-  const { data : { data: post = {}} = {}, error } = useSWR(slug ? `${postCacheKey}${slug}` : null, () =>
+  const { data : { data: post = {}} = {}, error } = useSWR(slug ? `${postsCacheKey}${slug}` : null, () =>
   getPost({slug}) 
   );
   console.log({  error });

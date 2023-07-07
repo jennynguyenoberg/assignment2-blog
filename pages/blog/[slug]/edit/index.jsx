@@ -30,15 +30,15 @@ export default function EditBlogPost() {
       body: editorContent,
       title: titleInput,
       slug: updatedSlug,
+      image,
     };
 
-    const { data, error } = await editPostTrigger(updatedPost);
-    console.log({ data, error });
-  };
+    const { error } = await editPostTrigger(updatedPost);
 
-  if (isLoading) {
-    return "...loading";
-  }
+    if (!error) {
+      router.push(`/blog/${updatedSlug}`);
+    }
+  };
 
   return (
     <BlogEditor
