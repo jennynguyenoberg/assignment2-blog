@@ -19,31 +19,37 @@ export const getPost = async({ slug }) => {
   return { data, error, status };
 };
 
-export const addPost = async (_, { arg: post }) => {
+export const addPost = async (_, { arg: newPost }) => {
   //Handle add post here
-  const { error, status } = await supabase.from("posts").insert({ post });
+  const { data, error, status } = await supabase
+    .from("posts")
+    .insert(newPost)
+    .select()
+    .single();
 
-  return { error, status };
+  return { data, error, status };
 };
 
-export const removePost = async (_, { arg: id }) => {
+export const removePost = async (_, { arg: deletedPost }) => {
   //Handle remove post here
-  const { error, status } = await supabase
+  const { data, error, status } = await supabase
     .from("posts")
-    .delete()
-    .eq("id", id);
+    .delete(deletedPost)
+    .eq("id", deletedPost.id)
+    .select()
+    .single();
 
-  return { error, status };
+  return { data, error, status };
 };
 
-export const editPost = async (_, { arg }) => {
-  //Handle edit post here
-  const { id, name } = arg;
-
-  const { error, status } = await supabase
+export const editPost = async (_, { arg: updatedPost }) => {
+    //Handle edit post here
+  const { data, error, status } = await supabase
     .from("posts")
-    .update({ id, name })
-    .eq("id", id);
+    .update(updatedPost)
+    .eq("id", updatedPost.id)
+    .select()
+    .single();
 
-  return { error, status };
+  return { data, error, status };
 };

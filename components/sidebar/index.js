@@ -48,39 +48,44 @@ export default function Navbar() {
       <div className={styles.sticky}>
         <nav className={styles.navigation} id="nav">
           <div className={styles.navigationItemWrapper}>
-            {Object.entries(navItems).map(([path, { name, requiresAuth, onClick }]) => {
-              const isActive = path === pathname;
+            {Object.entries(navItems).map(
+              ([path, { name, requiresAuth, onClick }]) => {
+                const isActive = path === pathname;
 
-              if((requiresAuth && !user) || (path === "/login" && user)) {
-                return null;
+                // vill inte renders en länk som kräver auth och det inte finns en användare.
+                if ((requiresAuth && !user) || (path === "/login" && user)) {
+                  return null;
+                }
+
+                if (path === "/logout") {
+                  return (
+                    <button
+                      className={classNames(styles.navigationButton, {
+                        [styles.textNeutral]: !isActive,
+                        [styles.fontBold]: isActive,
+                      })}
+                      key={path}
+                      onClick={onClick}
+                    >
+                      {name}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={path}
+                    href={path}
+                    className={classNames(styles.navigationItem, {
+                      [styles.textNeutral]: !isActive,
+                      [styles.fontBold]: isActive,
+                    })}
+                  >
+                    <span className={styles.linkName}>{name}</span>
+                  </Link>
+                );
               }
-
-              if (path === "/logout") {
-                return <button
-                  className={classNames(styles.navigationButton, {
-                    [styles.textNeutral]: !isActive,
-                    [styles.fontBold]: isActive,
-                  })}
-                  key={path}
-                  onClick={onClick}
-                >
-                  {name}
-                </button>;
-              }
-
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className={classNames(styles.navigationItem, {
-                    [styles.textNeutral]: !isActive,
-                    [styles.fontBold]: isActive,
-                  })}
-                >
-                  <span className={styles.linkName}>{name}</span>
-                </Link>
-              );
-            })}
+            )}
           </div>
         </nav>
       </div>
