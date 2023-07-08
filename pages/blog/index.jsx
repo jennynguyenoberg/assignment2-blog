@@ -1,9 +1,9 @@
-import Link from "next/link";
-import styles from "./blog.module.css";
-import Heading from "@components/heading";
+import Link from 'next/link';
+import styles from './blog.module.css';
+import Heading from '@components/heading';
 
-import useSWR from "swr";
-import { getPosts, postsCacheKey } from "../../api-routes/posts";
+import useSWR from 'swr';
+import { getPosts, postsCacheKey } from '../../api-routes/posts';
 
 export default function Blog() {
   const { data: { data = [] } = {} } = useSWR(postsCacheKey, getPosts);
@@ -24,4 +24,5 @@ export default function Blog() {
       ))}
     </section>
   );
-}3
+}
+3;

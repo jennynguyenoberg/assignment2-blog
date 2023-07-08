@@ -1,13 +1,13 @@
-import React from "react";
-import * as Icons from "../icons";
-import styles from "./link-modal.module.css";
-import { Modal } from "@components/modal";
-import Button from "@components/button";
-import Input from "@components/input";
-import Label from "@components/label";
+import React from 'react';
+import * as Icons from '../icons';
+import styles from './link-modal.module.css';
+import { Modal } from '@components/modal';
+import Button from '@components/button';
+import Input from '@components/input';
+import Label from '@components/label';
 
 export function LinkModal({
-  url = "",
+  url = '',
   closeModal,
   onSaveLink,
   onChangeUrl,

@@ -1,41 +1,44 @@
-import { useRouter } from "next/router";
-import styles from "./blog-post.module.css";
-import Comments from "./partials/comments";
-import AddComment from "./partials/add-comment";
-import Button from "@components/button";
-import Heading from "@components/heading";
-import BlogImageBanner from "@components/blog-image-banner";
+import { useRouter } from 'next/router';
+import styles from './blog-post.module.css';
+import Comments from './partials/comments';
+import AddComment from './partials/add-comment';
+import Button from '@components/button';
+import Heading from '@components/heading';
+import BlogImageBanner from '@components/blog-image-banner';
 
-import useSWR from "swr";
-import useSWRMutation from "swr/mutation"; 
+import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
 
-import { removePost, getPost, postsCacheKey } from "@/api-routes/posts";
+import { removePost, getPost, postsCacheKey } from '@/api-routes/posts';
 
 export default function BlogPost() {
-  const { trigger: deletePostTrigger } = useSWRMutation(postsCacheKey, removePost, {
-  });
+  const { trigger: deletePostTrigger } = useSWRMutation(
+    postsCacheKey,
+    removePost,
+    {},
+  );
 
   const router = useRouter();
   const { slug } = router.query;
 
-  const { data : { data: post = {}} = {}, error } = useSWR(slug ? `${postsCacheKey}${slug}` : null, () =>
-  getPost({slug}) 
+  const { data: { data: post = {} } = {}, error } = useSWR(
+    slug ? `${postsCacheKey}${slug}` : null,
+    () => getPost({ slug }),
   );
   console.log({ error });
 
-
   const handleDeletePost = async () => {
-    const postId = post.id 
+    const postId = post.id;
     const { error } = await deletePostTrigger(postId);
     console.log({ id: post.id });
-    if(!error) {
-      router.push('/blog'); 
-    } 
-  }; 
- 
+    if (!error) {
+      router.push('/blog');
+    }
+  };
+
   const handleEditPost = async () => {
-    router.push(`/blog/${slug}/edit`)
-    };
+    router.push(`/blog/${slug}/edit`);
+  };
 
   return (
     <>

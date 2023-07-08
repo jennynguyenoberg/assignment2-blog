@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import * as Icons from "../icons";
-import { useCallback } from "react";
-import Button from "../../../button";
+import classNames from 'classnames';
+import * as Icons from '../icons';
+import { useCallback } from 'react';
+import Button from '../../../button';
 
-import styles from "./menu-bar.module.css";
+import styles from './menu-bar.module.css';
 
 const MenuBar = ({ editor, openModal }) => {
   const toggleBold = useCallback(() => {
@@ -47,48 +47,48 @@ const MenuBar = ({ editor, openModal }) => {
         <Icons.RotateRight />
       </Button>
       <Button
-        className={classNames("menu-button", {
-          [styles.isActive]: editor.isActive("link"),
+        className={classNames('menu-button', {
+          [styles.isActive]: editor.isActive('link'),
         })}
         onClick={openModal}
       >
         <Icons.Link />
       </Button>
       <Button
-        className={classNames("menu-button", {
-          [styles.isActive]: editor.isActive("bold"),
+        className={classNames('menu-button', {
+          [styles.isActive]: editor.isActive('bold'),
         })}
         onClick={toggleBold}
       >
         <Icons.Bold />
       </Button>
       <Button
-        className={classNames("menu-button", {
-          [styles.isActive]: editor.isActive("underline"),
+        className={classNames('menu-button', {
+          [styles.isActive]: editor.isActive('underline'),
         })}
         onClick={toggleUnderline}
       >
         <Icons.Underline />
       </Button>
       <Button
-        className={classNames("menu-button", {
-          [styles.isActive]: editor.isActive("italic"),
+        className={classNames('menu-button', {
+          [styles.isActive]: editor.isActive('italic'),
         })}
         onClick={toggleItalic}
       >
         <Icons.Italic />
       </Button>
       <Button
-        className={classNames("menu-button", {
-          [styles.isActive]: editor.isActive("strike"),
+        className={classNames('menu-button', {
+          [styles.isActive]: editor.isActive('strike'),
         })}
         onClick={toggleStrike}
       >
         <Icons.Strikethrough />
       </Button>
       <Button
-        className={classNames("menu-button", {
-          [styles.isActive]: editor.isActive("code"),
+        className={classNames('menu-button', {
+          [styles.isActive]: editor.isActive('code'),
         })}
         onClick={toggleCode}
       >

@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import classNames from "classnames";
-import Button from "@components/button";
-import styles from "./upload-image.module.css";
-import BlogImageBanner from "@components/blog-image-banner";
+import React, { useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
+import Button from '@components/button';
+import styles from './upload-image.module.css';
+import BlogImageBanner from '@components/blog-image-banner';
 
 const ImageUpload = ({ onImageUpload, onReset, src, className }) => {
   const [previewUrl, setPreviewUrl] = useState(() => {
     if (src) {
-      if (typeof src === "string") {
+      if (typeof src === 'string') {
         return src;
       }
       return URL.createObjectURL(src);
@@ -19,7 +19,7 @@ const ImageUpload = ({ onImageUpload, onReset, src, className }) => {
   // Update the previewUrl whenever the src prop is updated
   useEffect(() => {
     if (src) {
-      if (typeof src === "string") {
+      if (typeof src === 'string') {
         setPreviewUrl(src);
       } else {
         setPreviewUrl(URL.createObjectURL(src));
@@ -55,7 +55,7 @@ const ImageUpload = ({ onImageUpload, onReset, src, className }) => {
     event.stopPropagation();
     setPreviewUrl(null);
 
-    if (typeof onReset === "function") {
+    if (typeof onReset === 'function') {
       onReset();
     }
   };

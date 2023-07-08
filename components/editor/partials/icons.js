@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export const Bold = ({ size = 16, color = "currentColor" }) => (
+export const Bold = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -17,7 +17,7 @@ export const Bold = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const Underline = ({ size = 16, color = "currentColor" }) => (
+export const Underline = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -34,7 +34,7 @@ export const Underline = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const Italic = ({ size = 16, color = "currentColor" }) => (
+export const Italic = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -50,7 +50,7 @@ export const Italic = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const Link = ({ size = 16, color = "currentColor" }) => (
+export const Link = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -67,7 +67,7 @@ export const Link = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const Code = ({ size = 16, color = "currentColor" }) => (
+export const Code = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -84,7 +84,7 @@ export const Code = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const Strikethrough = ({ size = 16, color = "currentColor" }) => (
+export const Strikethrough = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -100,7 +100,7 @@ export const Strikethrough = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const RotateLeft = ({ size = 16, color = "currentColor" }) => (
+export const RotateLeft = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -116,7 +116,7 @@ export const RotateLeft = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const RotateRight = ({ size = 16, color = "currentColor" }) => (
+export const RotateRight = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -132,7 +132,7 @@ export const RotateRight = ({ size = 16, color = "currentColor" }) => (
   </svg>
 );
 
-export const X = ({ size = 16, color = "currentColor" }) => (
+export const X = ({ size = 16, color = 'currentColor' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

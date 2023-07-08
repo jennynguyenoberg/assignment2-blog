@@ -3,8 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
-      "media.wired.com",
-      "dbosxrsjrzusszoojlre.supabase.co"
+      'media.wired.com',
+      'dbosxrsjrzusszoojlre.supabase.co'
     ],
   },
 };

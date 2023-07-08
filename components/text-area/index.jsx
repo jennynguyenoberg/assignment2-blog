@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import styles from "./text-area.module.css";
+import classNames from 'classnames';
+import styles from './text-area.module.css';
 
 export default function TextArea({ className, ...props }) {
   return (

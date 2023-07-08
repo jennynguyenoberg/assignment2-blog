@@ -1,5 +1,5 @@
-import styles from "./button.module.css";
-import classNames from "classnames";
+import styles from './button.module.css';
+import classNames from 'classnames';
 
 export default function Button({ children, className, ...props }) {
   return (
@@ -7,4 +7,4 @@ export default function Button({ children, className, ...props }) {
       {children}
     </button>
   );
-}
+};

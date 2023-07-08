@@ -1,44 +1,44 @@
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import styles from "./sidebar.module.css";
-import classNames from "classnames";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
-import { useRouter } from "next/router";
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import styles from './sidebar.module.css';
+import classNames from 'classnames';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const router = useRouter();
   const supabaseClient = useSupabaseClient();
   const user = useUser();
 
-  let pathname = usePathname() || "/";
-  if (pathname.includes("/blog/")) {
-    pathname = "/blog";
+  let pathname = usePathname() || '/';
+  if (pathname.includes('/blog/')) {
+    pathname = '/blog';
   }
 
   const navItems = {
-    "/": {
-      name: "Home",
+    '/': {
+      name: 'Home',
     },
-    "/about": {
-      name: "About",
+    '/about': {
+      name: 'About',
     },
-    "/blog": {
-      name: "Blog",
+    '/blog': {
+      name: 'Blog',
     },
-    "/create-post": {
-      name: "Create post",
+    '/create-post': {
+      name: 'Create post',
       requiresAuth: true,
     },
-    "/login": {
-      name: "Login",
+    '/login': {
+      name: 'Login',
       requiresAuth: false,
     },
-    "/logout": {
-      name: "Logout",
+    '/logout': {
+      name: 'Logout',
       requiresAuth: true,
       onClick: async () => {
         await supabaseClient.auth.signOut();
-        router.push("/login");
+        router.push('/login');
       },
     },
   };
@@ -53,11 +53,11 @@ export default function Navbar() {
                 const isActive = path === pathname;
 
                 // vill inte renders en länk som kräver auth och det inte finns en användare.
-                if ((requiresAuth && !user) || (path === "/login" && user)) {
+                if ((requiresAuth && !user) || (path === '/login' && user)) {
                   return null;
                 }
 
-                if (path === "/logout") {
+                if (path === '/logout') {
                   return (
                     <button
                       className={classNames(styles.navigationButton, {
@@ -84,7 +84,7 @@ export default function Navbar() {
                     <span className={styles.linkName}>{name}</span>
                   </Link>
                 );
-              }
+              },
             )}
           </div>
         </nav>

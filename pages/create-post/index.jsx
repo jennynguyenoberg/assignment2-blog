@@ -1,9 +1,9 @@
-import BlogEditor from "@/components/blog-editor";
-import { createSlug } from "@/utils/createSlug";
-import useSWRMutation from "swr/mutation";
-import { postsCacheKey, addPost } from "../../api-routes/posts";
-import { useRouter } from "next/router";
-import { useUser } from "@supabase/auth-helpers-react";
+import BlogEditor from '@/components/blog-editor';
+import { createSlug } from '@/utils/createSlug';
+import useSWRMutation from 'swr/mutation';
+import { postsCacheKey, addPost } from '../../api-routes/posts';
+import { useRouter } from 'next/router';
+import { useUser } from '@supabase/auth-helpers-react';
 
 export default function CreatePost() {
   const router = useRouter();

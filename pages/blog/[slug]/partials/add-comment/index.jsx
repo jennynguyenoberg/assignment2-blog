@@ -1,9 +1,9 @@
-import { useRef } from "react";
-import Button from "@components/button";
-import Input from "@components/input";
-import Label from "@components/label";
-import TextArea from "@components/text-area";
-import styles from "./add-comment.module.css";
+import { useRef } from 'react';
+import Button from '@components/button';
+import Input from '@components/input';
+import Label from '@components/label';
+import TextArea from '@components/text-area';
+import styles from './add-comment.module.css';
 
 import { addComment, commentsCacheKey } from '@/api-routes/comments';
 import useSWRMutation from 'swr/mutation';
@@ -11,7 +11,8 @@ import useSWRMutation from 'swr/mutation';
 export default function AddComment({ postId }) {
   const formRef = useRef(); // create a reference
 
-  const { trigger: addCommentTrigger } = useSWRMutation(postId ? `${commentsCacheKey}${postId}` : null,
+  const { trigger: addCommentTrigger } = useSWRMutation(
+    postId ? `${commentsCacheKey}${postId}` : null,
     addComment,
   );
 
@@ -24,8 +25,8 @@ export default function AddComment({ postId }) {
     /* 
       Perhaps a good place to add a comment to the database that is associated with the blog post 😙
       */
-    const newComment = { author, comment, post_id: postId, };
-   
+    const newComment = { author, comment, post_id: postId };
+
     const { status, error } = await addCommentTrigger(newComment);
     console.log({ author, comment, postId });
 

@@ -1,22 +1,22 @@
-import React, { useCallback, useState } from "react";
-import classNames from "classnames";
+import React, { useCallback, useState } from 'react';
+import classNames from 'classnames';
 
-import { useEditor, EditorContent, BubbleMenu } from "@tiptap/react";
-import Document from "@tiptap/extension-document";
-import Paragraph from "@tiptap/extension-paragraph";
-import Text from "@tiptap/extension-text";
-import Link from "@tiptap/extension-link";
-import Bold from "@tiptap/extension-bold";
-import Underline from "@tiptap/extension-underline";
-import Italic from "@tiptap/extension-italic";
-import Strike from "@tiptap/extension-strike";
-import Code from "@tiptap/extension-code";
-import History from "@tiptap/extension-history";
+import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
+import Document from '@tiptap/extension-document';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
+import Link from '@tiptap/extension-link';
+import Bold from '@tiptap/extension-bold';
+import Underline from '@tiptap/extension-underline';
+import Italic from '@tiptap/extension-italic';
+import Strike from '@tiptap/extension-strike';
+import Code from '@tiptap/extension-code';
+import History from '@tiptap/extension-history';
 
-import { LinkModal } from "./partials/link-modal/link-modal";
-import MenuBar from "./partials/menu-bar/menu-bar";
-import styles from "./editor.module.css";
-import Button from "../button";
+import { LinkModal } from './partials/link-modal/link-modal';
+import MenuBar from './partials/menu-bar/menu-bar';
+import styles from './editor.module.css';
+import Button from '../button';
 
 export default function Editor({ className, onChange, content }) {
   const editor = useEditor({
@@ -36,23 +36,23 @@ export default function Editor({ className, onChange, content }) {
     ],
     content,
     onUpdate: ({ editor }) => {
-      if (typeof onChange === "function") {
+      if (typeof onChange === 'function') {
         const editorContent = editor.getHTML();
         onChange(editorContent);
       }
     },
   });
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState('');
 
   const openModal = useCallback(() => {
-    setUrl(editor.getAttributes("link").href);
+    setUrl(editor.getAttributes('link').href);
     setIsOpen(true);
   }, [editor]);
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
-    setUrl("");
+    setUrl('');
   }, []);
 
   const saveLink = useCallback(() => {
@@ -60,17 +60,17 @@ export default function Editor({ className, onChange, content }) {
       editor
         .chain()
         .focus()
-        .extendMarkRange("link")
-        .setLink({ href: url, target: "_blank" })
+        .extendMarkRange('link')
+        .setLink({ href: url, target: '_blank' })
         .run();
     } else {
-      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+      editor.chain().focus().extendMarkRange('link').unsetLink().run();
     }
     closeModal();
   }, [editor, url, closeModal]);
 
   const removeLink = useCallback(() => {
-    editor.chain().focus().extendMarkRange("link").unsetLink().run();
+    editor.chain().focus().extendMarkRange('link').unsetLink().run();
     closeModal();
   }, [editor, closeModal]);
 
@@ -79,7 +79,7 @@ export default function Editor({ className, onChange, content }) {
   }
 
   return (
-    <div className={classNames(className, "editor")}>
+    <div className={classNames(className, 'editor')}>
       <MenuBar editor={editor} openModal={openModal} />
       <BubbleMenu
         className="bubble-menu-light"
@@ -87,7 +87,7 @@ export default function Editor({ className, onChange, content }) {
         editor={editor}
         shouldShow={({ editor, view, state, oldState, from, to }) => {
           // only show the bubble menu for links.
-          return from === to && editor.isActive("link");
+          return from === to && editor.isActive('link');
         }}
       >
         <div className={styles.bubbleMenu}>

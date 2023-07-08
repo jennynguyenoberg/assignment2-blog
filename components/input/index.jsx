@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import styles from "./input.module.css";
+import classNames from 'classnames';
+import styles from './input.module.css';
 
 export default function Input({ className, ...props }) {
   return (

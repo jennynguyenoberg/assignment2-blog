@@ -1,12 +1,12 @@
-import { useRouter } from "next/router";
-import BlogEditor from "../../../../components/blog-editor";
+import { useRouter } from 'next/router';
+import BlogEditor from '../../../../components/blog-editor';
 
-import { getPost, postsCacheKey } from "@/api-routes/posts";
-import useSWR from "swr";
-import useSWRMutation from "swr/mutation";
-import { createSlug } from "../../../../utils/createSlug";
-import { editPost } from "../../../../api-routes/posts";
-import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
+import { getPost, postsCacheKey } from '@/api-routes/posts';
+import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
+import { createSlug } from '../../../../utils/createSlug';
+import { editPost } from '../../../../api-routes/posts';
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs';
 
 export default function EditBlogPost() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function EditBlogPost() {
   } = useSWR(slug ? `${postsCacheKey}${slug}` : null, () => getPost({ slug }));
   const { trigger: editPostTrigger } = useSWRMutation(
     `${postsCacheKey}${slug}`,
-    editPost
+    editPost,
   );
 
   const handleOnSubmit = async ({ editorContent, titleInput, image }) => {
@@ -62,10 +62,10 @@ export const getServerSideProps = async (ctx) => {
   } = await supabase.auth.getSession();
 
   const { data } = await supabase
-    .from("posts")
+    .from('posts')
     .select()
     .single()
-    .eq("slug", slug);
+    .eq('slug', slug);
 
   const isAuthor = data.user_id === session.user.id;
 
