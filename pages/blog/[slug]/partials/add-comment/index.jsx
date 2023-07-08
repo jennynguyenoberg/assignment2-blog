@@ -11,7 +11,7 @@ import useSWRMutation from 'swr/mutation';
 export default function AddComment({ postId }) {
   const formRef = useRef(); // create a reference
 
-  const { trigger: addCommentTrigger } = useSWRMutation(commentsCacheKey,
+  const { trigger: addCommentTrigger } = useSWRMutation(postId ? `${commentsCacheKey}${postId}` : null,
     addComment,
   );
 
