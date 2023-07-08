@@ -43,10 +43,10 @@ export default function EditBlogPost() {
   return (
     <BlogEditor
       heading="Edit blog post"
-      title={post.title}
-      src={post.image}
-      alt={post.title}
-      content={post.body}
+      title={post?.title}
+      src={post?.image}
+      alt={post?.title}
+      content={post?.body}
       buttonText="Save changes"
       onSubmit={handleOnSubmit}
     />
