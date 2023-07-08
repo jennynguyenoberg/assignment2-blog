@@ -5,7 +5,7 @@ export const getComments = async ({ postId }) => {
   //Handle get all comments
   const { data, error, status } = await supabase
     .from("comments")
-    .select()
+    .select("*") //fetch all comments
     .eq("post_id", postId);
   
   return { data, error, status };
@@ -26,9 +26,8 @@ export const removeComment = async (_, { arg: id }) => {
   //Handle remove comment here
   const { data, error, status } = await supabase
     .from("comments")
-    .delete(id)
-    .eq("id", id)
-    .single();
+    .delete()
+    .eq("id", id);
 
   return { data, error, status }
 };

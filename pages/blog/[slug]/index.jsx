@@ -6,10 +6,10 @@ import Button from "@components/button";
 import Heading from "@components/heading";
 import BlogImageBanner from "@components/blog-image-banner";
 
-import useSWR  from "swr"
+import useSWR from "swr";
 import useSWRMutation from "swr/mutation"; 
 
-import { editPost, removePost, getPost, postsCacheKey } from "@/api-routes/posts";
+import { removePost, getPost, postsCacheKey } from "@/api-routes/posts";
 
 export default function BlogPost() {
   const { trigger: deletePostTrigger } = useSWRMutation(postsCacheKey, removePost, {
@@ -21,12 +21,12 @@ export default function BlogPost() {
   const { data : { data: post = {}} = {}, error } = useSWR(slug ? `${postsCacheKey}${slug}` : null, () =>
   getPost({slug}) 
   );
-  console.log({  error });
+  console.log({ error });
 
 
   const handleDeletePost = async () => {
     const postId = post.id 
-    const { status, error } = await deletePostTrigger(postId);
+    const { error } = await deletePostTrigger(postId);
     console.log({ id: post.id });
     if(!error) {
       router.push('/blog'); 
