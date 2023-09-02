@@ -14,8 +14,13 @@ export default function Blog() {
   // Reverse the filteredData array
   const reversedData = [...filteredData].reverse();
 
+  // Filter the data based on the search query
+  const filteredDisplayData = reversedData.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   // Determine how many posts to display
-  const displayData = showAll ? reversedData : reversedData.slice(0, 6);
+  const displayData = showAll ? filteredDisplayData : filteredDisplayData.slice(0, 6);
 
   if (error) {
     return <div>Error loading data. Please try again later.</div>;
@@ -46,7 +51,7 @@ export default function Blog() {
           </div>
         </Link>
       ))}
-      {reversedData.length > 6 && (
+      {filteredDisplayData.length > 6 && (
         <div>
           {showAll ? (
             <button onClick={() => setShowAll(false)}>Show Less</button>
