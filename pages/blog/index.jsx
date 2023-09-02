@@ -16,11 +16,13 @@ export default function Blog() {
 
   // Filter the data based on the search query
   const filteredDisplayData = reversedData.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+    post.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   // Determine how many posts to display
-  const displayData = showAll ? filteredDisplayData : filteredDisplayData.slice(0, 6);
+  const displayData = showAll
+    ? filteredDisplayData
+    : filteredDisplayData.slice(0, 6);
 
   if (error) {
     return <div>Error loading data. Please try again later.</div>;

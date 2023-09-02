@@ -61,8 +61,8 @@ export const editPost = async (_, { arg: updatedPost }) => {
 
     if (!error) {
       image = publicUrl;
-    };
-  };
+    }
+  }
 
   const { data, error, status } = await supabase
     .from('posts')

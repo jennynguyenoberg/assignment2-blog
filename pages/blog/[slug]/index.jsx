@@ -5,7 +5,7 @@ import AddComment from './partials/add-comment';
 import Button from '@components/button';
 import Heading from '@components/heading';
 import BlogImageBanner from '@components/blog-image-banner';
-import RecentPosts from '../../recent-posts'
+import RecentPosts from '../../recent-posts';
 
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -22,10 +22,11 @@ export default function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
 
-  const { data: { data: post = {} } = {}, error, isValidating } = useSWR(
-    slug ? `${postsCacheKey}${slug}` : null,
-    () => getPost({ slug }),
-  );
+  const {
+    data: { data: post = {} } = {},
+    error,
+    isValidating,
+  } = useSWR(slug ? `${postsCacheKey}${slug}` : null, () => getPost({ slug }));
 
   const handleDeletePost = async () => {
     const postId = post.id;

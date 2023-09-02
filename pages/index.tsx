@@ -1,5 +1,5 @@
 import Heading from '@components/heading';
-import RecentPosts from '@/pages/recent-posts'
+import RecentPosts from '@/pages/recent-posts';
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <Heading>Home</Heading>
       <RecentPosts />
     </>
-  )
+  );
 }
