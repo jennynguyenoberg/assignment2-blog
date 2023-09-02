@@ -33,9 +33,9 @@ export default function Blog() {
       />
       {filteredData.map((post) => (
         <Link
-        key={post.slug}
-        className={styles.link}
-        href={`/blog/${post.slug}`}
+          key={post.slug}
+          className={styles.link}
+          href={`/blog/${post.slug}`}
         >
           <div className="w-full flex flex-col">
             <p>{post.title}</p>
@@ -43,9 +43,9 @@ export default function Blog() {
           </div>
         </Link>
       ))}
-      {data.length > 6 && !showAll && (
+      {data.length > 6 && (
         <button onClick={toggleShowAll} className={styles.seeMore}>
-          See More
+          {showAll ? 'Show Less' : 'See More'}
         </button>
       )}
     </section>
