@@ -74,7 +74,7 @@ export default function BlogPost() {
           <time className={styles.date}>{post.created_at}</time>
           <div className={styles.border} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
+        <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post.body }} />
         <span className={styles.author}>Author: {post.author}</span>
 
         {/* The Delete & Edit part should only be showed if you are authenticated and you are the author */}

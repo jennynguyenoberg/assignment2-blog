@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Fira;
+  src: url('../components/fonts/Fira_Code_v6.2/woff/FiraCode-Regular.woff') format('woff'),
+    url('../components/fonts/Fira_Code_v6.2/woff2/FiraCode-Regular.woff2') format('woff2');
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -40,7 +46,7 @@ code {
 .ProseMirror pre {
   background: #0d0d0d;
   color: #fff;
-  font-family: 'JetBrainsMono', monospace;
+  font-family: 'Fira', monospace;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
 }
