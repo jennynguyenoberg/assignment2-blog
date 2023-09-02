@@ -31,18 +31,22 @@ export default function Blog() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {filteredData.map((post) => (
-        <Link
-          key={post.slug}
-          className={styles.link}
-          href={`/blog/${post.slug}`}
-        >
-          <div className="w-full flex flex-col">
-            <p>{post.title}</p>
-            <time className={styles.date}>{post.created_at}</time>
-          </div>
-        </Link>
-      ))}
+      {filteredData.length === 0 ? (
+        <p>No posts found.</p>
+      ) : (
+        filteredData.map((post) => (
+          <Link
+            key={post.slug}
+            className={styles.link}
+            href={`/blog/${post.slug}`}
+          >
+            <div className="w-full flex flex-col">
+              <p>{post.title}</p>
+              <time className={styles.date}>{post.created_at}</time>
+            </div>
+          </Link>
+        ))
+      )}
       {data.length > 6 && (
         <button onClick={toggleShowAll} className={styles.seeMore}>
           {showAll ? 'Show Less' : 'See More'}
