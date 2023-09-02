@@ -47,7 +47,7 @@ export default function Blog() {
         <button onClick={toggleShowAll} className={styles.seeMore}>
           See More
         </button>
-      )};
+      )}
     </section>
   );
 };
