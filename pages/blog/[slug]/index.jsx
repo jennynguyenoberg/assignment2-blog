@@ -5,6 +5,7 @@ import AddComment from './partials/add-comment';
 import Button from '@components/button';
 import Heading from '@components/heading';
 import BlogImageBanner from '@components/blog-image-banner';
+import RecentPosts from '../../recent-posts'
 
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -21,11 +22,10 @@ export default function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
 
-  const { data: { data: post = {} } = {}, error } = useSWR(
+  const { data: { data: post = {} } = {}, error, isValidating } = useSWR(
     slug ? `${postsCacheKey}${slug}` : null,
     () => getPost({ slug }),
   );
-  console.log({ error });
 
   const handleDeletePost = async () => {
     const postId = post.id;
@@ -39,6 +39,16 @@ export default function BlogPost() {
   const handleEditPost = async () => {
     router.push(`/blog/${slug}/edit`);
   };
+
+  if (isValidating) {
+    // Data is still loading
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    // Error occurred while loading data
+    return <p>Error loading data: {error.message}</p>;
+  }
 
   return (
     <>
@@ -63,6 +73,7 @@ export default function BlogPost() {
 
       {/* This component should only be displayed if a user is authenticated */}
       <AddComment postId={post.id} />
+      <RecentPosts />
     </>
   );
 }
