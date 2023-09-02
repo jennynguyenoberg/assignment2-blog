@@ -8,11 +8,19 @@ import { useState } from 'react';
 
 export default function Blog() {
   const { data: { data = [] } = {} } = useSWR(postsCacheKey, getPosts);
-  
+
   const [searchQuery, setSearchQuery] = useState('');
-  const filteredData = data.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const [showAll, setShowAll] = useState(false); // Add state to control showing all posts
+
+  const filteredData = data
+    .filter((post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .slice(0, showAll ? data.length : 6); // Show only 6 posts or all if showAll is true
+
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
 
   return (
     <section>
@@ -25,9 +33,9 @@ export default function Blog() {
       />
       {filteredData.map((post) => (
         <Link
-          key={post.slug}
-          className={styles.link}
-          href={`/blog/${post.slug}`}
+        key={post.slug}
+        className={styles.link}
+        href={`/blog/${post.slug}`}
         >
           <div className="w-full flex flex-col">
             <p>{post.title}</p>
@@ -35,6 +43,11 @@ export default function Blog() {
           </div>
         </Link>
       ))}
+      {data.length > 6 && !showAll && (
+        <button onClick={toggleShowAll} className={styles.seeMore}>
+          See More
+        </button>
+      )};
     </section>
   );
 };
