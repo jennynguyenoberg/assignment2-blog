@@ -7,10 +7,14 @@ import { getPosts, postsCacheKey } from '../../api-routes/posts';
 
 export default function RecentPosts() {
   const { data: { data = [] } = {} } = useSWR(postsCacheKey, getPosts);
+
+  // Get the last three posts by slicing the data array and then reverse the order
+  const lastThreePosts = data.slice(-3).reverse();
+
   return (
     <section>
       <Heading>Recent Articles</Heading>
-      {data?.map((post) => (
+      {lastThreePosts.map((post) => (
         <Link
           key={post.slug}
           className={styles.link}
