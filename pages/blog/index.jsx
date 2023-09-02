@@ -7,16 +7,26 @@ import { getPosts, postsCacheKey } from '../../api-routes/posts';
 import { useState } from 'react';
 
 export default function Blog() {
-  const { data: { data = [] } = {} } = useSWR(postsCacheKey, getPosts);
+  const { data, error } = useSWR(postsCacheKey, getPosts);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [showAll, setShowAll] = useState(false); // Add state to control showing all posts
+  const [showAll, setShowAll] = useState(false);
 
-  const filteredData = data
+  if (error) {
+    return <p>Error loading data: {error.message}</p>;
+  }
+
+  if (!data) {
+    return <p>Loading...</p>;
+  }
+
+  const { data: postData = [] } = data;
+
+  const filteredData = postData
     .filter((post) =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase())
     )
-    .slice(0, showAll ? data.length : 6); // Show only 6 posts or all if showAll is true
+    .slice(0, showAll ? postData.length : 6);
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
@@ -47,11 +57,11 @@ export default function Blog() {
           </Link>
         ))
       )}
-      {data.length > 6 && (
+      {postData.length > 6 && (
         <button onClick={toggleShowAll} className={styles.seeMore}>
           {showAll ? 'Show Less' : 'See More'}
         </button>
       )}
     </section>
   );
-};
+}
