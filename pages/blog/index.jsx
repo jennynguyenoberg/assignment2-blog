@@ -9,7 +9,7 @@ export default function Blog() {
   const { data: { data = [] } = {} } = useSWR(postsCacheKey, getPosts);
   return (
     <section>
-      <Heading>Blog</Heading>
+      <Heading>All Articles</Heading>
       {data?.map((post) => (
         <Link
           key={post.slug}
@@ -24,5 +24,4 @@ export default function Blog() {
       ))}
     </section>
   );
-}
-3;
+};
