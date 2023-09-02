@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import Heading from '@components/heading';
 import styles from './blog.module.css';
 import Link from 'next/link';
+import { Puff } from 'react-loader-spinner'
 
 export default function Blog() {
   const { data, error } = useSWR(postsCacheKey, getPosts);
@@ -29,7 +30,21 @@ export default function Blog() {
   }
 
   if (!data) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loader}>
+        <Puff
+          height="80"
+          width="80"
+          radius={1}
+          color="#cecece"
+          ariaLabel="puff-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+        <p>Loading...</p>
+      </div>
+    )
   }
 
   return (

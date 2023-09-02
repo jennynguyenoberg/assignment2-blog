@@ -6,6 +6,7 @@ import Button from '@components/button';
 import Heading from '@components/heading';
 import BlogImageBanner from '@components/blog-image-banner';
 import RecentPosts from '../../recent-posts';
+import { Puff } from 'react-loader-spinner'
 
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -42,8 +43,21 @@ export default function BlogPost() {
   };
 
   if (isValidating) {
-    // Data is still loading
-    return <p>Loading...</p>;
+    return (
+      <div className={styles.loader}>
+        <Puff
+          height="80"
+          width="80"
+          radius={1}
+          color="#cecece"
+          ariaLabel="puff-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+        <p>Loading...</p>
+      </div>
+    )
   }
 
   if (error) {
