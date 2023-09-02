@@ -5,6 +5,7 @@ import AddComment from './partials/add-comment';
 import Button from '@components/button';
 import Heading from '@components/heading';
 import BlogImageBanner from '@components/blog-image-banner';
+import RecentPosts from '../../recent-posts'
 
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -72,6 +73,7 @@ export default function BlogPost() {
 
       {/* This component should only be displayed if a user is authenticated */}
       <AddComment postId={post.id} />
+      <RecentPosts />
     </>
   );
 }
