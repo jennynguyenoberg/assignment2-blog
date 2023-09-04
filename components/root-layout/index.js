@@ -1,6 +1,7 @@
 import styles from './root-layout.module.css';
 import Sidebar from '../sidebar';
 import classNames from 'classnames';
+import Footer from '../footer';
 
 import { Inter } from 'next/font/google';
 
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
     <div className={classNames(styles.container, inter.className)}>
       <Sidebar />
       <main className={styles.mainContent}>{children}</main>
+      <Footer />
     </div>
   );
 }
