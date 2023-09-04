@@ -46,6 +46,13 @@
   align-items: flex-end;
 }
 
+.logoutButton {
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* --- Hamburger menu --- */
 
 .menu-icon {

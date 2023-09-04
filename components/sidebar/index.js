@@ -85,7 +85,9 @@ export default function Sidebar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
-        <Image src={navItems['/'].img} alt="Logo" width={32} height={32} />
+        <Link href="/">
+            <Image src={navItems['/'].img} alt="Logo" width={32} height={32} />
+        </Link>
       </div>
       <div className={styles.menuContainer}>
         <div className={`${styles['menu-icon']} ${isOpen ? styles.open : ''}`} onClick={toggleMenu}>
@@ -96,15 +98,46 @@ export default function Sidebar() {
         <div className={styles.navItemContainer}>
           {isOpen && (
             <ul className={`${styles['navbar-items']} ${isOpen ? styles.open : ''}`}>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Blog</a>
-              </li>
-              <li>
-                <a href="#">Login</a>
-              </li>
+              {Object.entries(navItems).map(
+              ([path, { name, requiresAuth, onClick }]) => {
+                const isActive = path === pathname;
+
+                // Don't render a link that requires auth if there's no user.
+                if ((requiresAuth && !user) || (path === '/login' && user)) {
+                  return null;
+                }
+
+                if (path === '/logout') {
+                  return (
+                    <button
+                      className={classNames(styles.logoutButton, {
+                        [styles.textNeutral]: !isActive,
+                        [styles.fontBold]: isActive,
+                      })}
+                      key={path}
+                      onClick={onClick}
+                    >
+                      {name}
+                    </button>
+                  );
+                }
+  
+                return (
+                  <Link
+                    key={path}
+                    href={path}
+                    className={classNames(styles.navigationItem, {
+                      [styles.textNeutral]: !isActive,
+                      [styles.fontBold]: isActive,
+                    })}
+                  >
+                    <span className={styles.linkName}>
+                      
+                      {name}
+                    </span>
+                  </Link>
+                );
+              })}
             </ul>
           )}
         </div>
@@ -112,63 +145,3 @@ export default function Sidebar() {
     </nav>
   );
 }
-
-//   return (
-//     <aside className={styles.container}>
-//       <div className={styles.sticky}>
-//         <nav className={styles.navigation} id="nav">
-//           <div className={styles.navigationItemWrapper}>
-//             {Object.entries(navItems).map(
-//               ([path, { img, name, requiresAuth, onClick }]) => {
-//                 const isActive = path === pathname;
-
-//                 // Don't render a link that requires auth if there's no user.
-//                 if ((requiresAuth && !user) || (path === '/login' && user)) {
-//                   return null;
-//                 }
-
-//                 if (path === '/logout') {
-//                   return (
-//                     <button
-//                       className={classNames(styles.navigationButton, {
-//                         [styles.textNeutral]: !isActive,
-//                         [styles.fontBold]: isActive,
-//                       })}
-//                       key={path}
-//                       onClick={onClick}
-//                     >
-//                       {name}
-//                     </button>
-//                   );
-//                 }
-
-//                 return (
-//                   <Link
-//                     key={path}
-//                     href={path}
-//                     className={classNames(styles.navigationItem, {
-//                       [styles.textNeutral]: !isActive,
-//                       [styles.fontBold]: isActive,
-//                     })}
-//                   >
-//                     <span className={styles.linkName}>
-//                       {img && (
-//                         <Image
-//                           src={img}
-//                           alt={name}
-//                           width={32}
-//                           height={32}
-//                         />
-//                       )}
-//                       {name}
-//                     </span>
-//                   </Link>
-//                 );
-//               },
-//             )}
-//           </div>
-//         </nav>
-//       </div>
-//     </aside>
-//   );
-// }
