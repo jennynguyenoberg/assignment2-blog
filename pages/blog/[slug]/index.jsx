@@ -42,6 +42,10 @@ export default function BlogPost() {
     router.push(`/blog/${slug}/edit`);
   };
 
+  const handleGoBack = () => {
+    router.push('/blog'); // This will navigate to the /blog page
+  };
+
   if (isValidating) {
     return (
       <div className={styles.loader}>
@@ -68,6 +72,7 @@ export default function BlogPost() {
   return (
     <>
       <section className={styles.container}>
+        <button onClick={handleGoBack}>Go Back to Blog</button>
         <Heading>{post.title}</Heading>
         {post?.image && <BlogImageBanner src={post.image} alt={post.title} />}
         <div className={styles.dateContainer}>
