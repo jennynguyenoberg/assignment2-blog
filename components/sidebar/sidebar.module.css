@@ -1,117 +1,77 @@
-.container {
+.navbar {
   display: flex;
-}
-
-/* .container {
-  margin-right: -1rem;
-  margin-left: -1rem;
-  padding-right: 0;
-  padding-left: 0;
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 150px;
-    flex-shrink: 0;
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .sticky {
-    position: sticky;
-    top: 5rem;
-  }
-}
-
-.navigation {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
   position: relative;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 0;
 }
 
-@media (min-width: 768px) {
-  .navigation {
-    flex-direction: column;
-    padding-left: 0;
-    padding-right: 0;
-    overflow: auto;
-    position: relative;
-  }
-}
-
-.navigationItemWrapper {
+.logoContainer {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  .navigationItemWrapper {
-    padding-right: 2.5rem;
-    flex-direction: column;
-    margin-top: 0;
-  }
-}
-
-.navigationButton {
-  background: none;
-  border: none;
-  color: inherit;
+  align-items: center;
+  list-style: none;
   cursor: pointer;
-  font: inherit;
-  height: 20px;
-  outline: inherit;
-  position: relative;
-  text-align: left;
-  white-space: nowrap;
-  width: 90px;
-  
 }
 
-.navigationItem {
+.menuContainer {
   display: flex;
-  align-items: middle;
-  margin-bottom: 0.5rem;
-  color: inherit;
-  text-decoration: none;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
-.navigationItem:hover,
-.navigationButton:hover {
-  color: #333;
+.navbar.open .navbar-items {
+  opacity: 1;
+  cursor: pointer;
 }
 
-.textNeutral {
-  color: #71717a;
+.navbar-items li {
+  text-align: right;
+  padding: 4px 0;
 }
 
-.fontBold {
-  font-weight: 500;
-  background-color: #f5f5f5;
+.navbar-items.open {
+  margin-top: 15px;
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  transition: opacity 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.linkName,
-.navigationButton {
-  position: relative;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  white-space: nowrap;
+/* --- Hamburger menu --- */
+
+.menu-icon {
+  cursor: pointer;
+  display: flex;
+  transition: all 0.8s ease;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 11px;
+  z-index: 1;
 }
 
-.linkName:hover {
-  transition: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  width: 100%;
-} */
+.menu-icon div.bar {
+  width: 15px;
+  height: 1.5px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+/* --- Hamburger menu animation --- */
+
+.menu-icon.open div.bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open div.bar:first-child {
+  transform: translateY(6px) rotate(90deg);
+}
+
+.menu-icon.open div.bar:last-child {
+  transform: translateY(-3px) rotate(-180deg);
+}

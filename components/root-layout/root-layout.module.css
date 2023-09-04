@@ -1,5 +1,20 @@
 .container {
-  
+  margin: 0 9.5rem;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin: 0 1.5rem;
+    transition: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 0 9.5rem;
+  }
 }
 
 /* .container {
