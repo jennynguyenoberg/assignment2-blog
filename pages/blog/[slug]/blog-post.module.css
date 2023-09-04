@@ -1,4 +1,8 @@
 .container {
+
+}
+
+/* .container {
   padding-bottom: 20px;
   border-bottom: 1px solid black;
 }
@@ -48,12 +52,7 @@
   gap: 5px;
 }
 
-/* blog-post.module.css */
-
-/* Target <code> tags within .postBody */
 .postBody p code {
-  /* Add your styles for <code> tags here */
-  /* For example, change font color */
   background-color: transparent;
   font-family: 'Fira';
   font-size: 12px;
@@ -62,4 +61,4 @@
 
 .postBody p {
   color: #616161;
-}
+} */

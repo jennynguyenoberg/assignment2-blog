@@ -4,6 +4,7 @@ import styles from './sidebar.module.css';
 import classNames from 'classnames';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/router';
+import Image from 'next/image'; // Import the Image component from 'next/image'
 
 export default function Navbar() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function Navbar() {
 
   const navItems = {
     '/': {
-      name: 'Home',
+      img: '/logo.png',
     },
     '/about': {
       name: 'About',
@@ -49,10 +50,10 @@ export default function Navbar() {
         <nav className={styles.navigation} id="nav">
           <div className={styles.navigationItemWrapper}>
             {Object.entries(navItems).map(
-              ([path, { name, requiresAuth, onClick }]) => {
+              ([path, { img, name, requiresAuth, onClick }]) => {
                 const isActive = path === pathname;
 
-                // vill inte renders en länk som kräver auth och det inte finns en användare.
+                // Don't render a link that requires auth if there's no user.
                 if ((requiresAuth && !user) || (path === '/login' && user)) {
                   return null;
                 }
@@ -81,7 +82,17 @@ export default function Navbar() {
                       [styles.fontBold]: isActive,
                     })}
                   >
-                    <span className={styles.linkName}>{name}</span>
+                    <span className={styles.linkName}>
+                      {img && (
+                        <Image
+                          src={img}
+                          alt={name}
+                          width={32}
+                          height={32}
+                        />
+                      )}
+                      {name}
+                    </span>
                   </Link>
                 );
               },

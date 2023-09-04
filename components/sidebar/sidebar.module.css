@@ -1,4 +1,8 @@
 .container {
+  display: flex;
+}
+
+/* .container {
   margin-right: -1rem;
   margin-left: -1rem;
   padding-right: 0;
@@ -58,20 +62,17 @@
 
 .navigationButton {
   background: none;
-  color: inherit;
   border: none;
-  padding: 0;
-  font: inherit;
+  color: inherit;
   cursor: pointer;
+  font: inherit;
+  height: 20px;
   outline: inherit;
-
   position: relative;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  white-space: nowrap;
   text-align: left;
+  white-space: nowrap;
+  width: 90px;
+  
 }
 
 .navigationItem {
@@ -96,7 +97,8 @@
   background-color: #f5f5f5;
 }
 
-.linkName {
+.linkName,
+.navigationButton {
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -105,12 +107,11 @@
   white-space: nowrap;
 }
 
-.linkName:hover,
-.navigationButton:hover {
+.linkName:hover {
   transition: all;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
   background-color: #f5f5f5;
   border-radius: 5px;
   width: 100%;
-}
+} */
