@@ -14,7 +14,8 @@
 }
 
 .logoContainer:hover {
-  animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
 }
 
 .menuContainer {
@@ -35,6 +36,8 @@
 }
 
 .navbar-items.open {
+  background: transparent;
+  z-index: 1;
   margin-top: 15px;
   list-style: none;
   padding: 0;

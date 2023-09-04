@@ -4,8 +4,8 @@ import { Puff } from 'react-loader-spinner';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [loading, setLoading] = useState(true); 
-  
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -27,7 +27,7 @@ export default function Home() {
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
-      />
+        />
       ) : (
         <RecentPosts />
       )}

@@ -80,64 +80,69 @@ export default function Sidebar() {
       document.removeEventListener('click', handleDocumentClick);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [shouldCloseMenu]); 
+  }, [shouldCloseMenu]);
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
         <Link href="/">
-            <Image src={navItems['/'].img} alt="Logo" width={32} height={32} />
+          <Image src={navItems['/'].img} alt="Logo" width={32} height={32} />
         </Link>
       </div>
       <div className={styles.menuContainer}>
-        <div className={`${styles['menu-icon']} ${isOpen ? styles.open : ''}`} onClick={toggleMenu}>
+        <div
+          className={`${styles['menu-icon']} ${isOpen ? styles.open : ''}`}
+          onClick={toggleMenu}
+        >
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
         </div>
         <div className={styles.navItemContainer}>
           {isOpen && (
-            <ul className={`${styles['navbar-items']} ${isOpen ? styles.open : ''}`}>
+            <ul
+              className={`${styles['navbar-items']} ${
+                isOpen ? styles.open : ''
+              }`}
+            >
               {Object.entries(navItems).map(
-              ([path, { name, requiresAuth, onClick }]) => {
-                const isActive = path === pathname;
+                ([path, { name, requiresAuth, onClick }]) => {
+                  const isActive = path === pathname;
 
-                // Don't render a link that requires auth if there's no user.
-                if ((requiresAuth && !user) || (path === '/login' && user)) {
-                  return null;
-                }
+                  // Don't render a link that requires auth if there's no user.
+                  if ((requiresAuth && !user) || (path === '/login' && user)) {
+                    return null;
+                  }
 
-                if (path === '/logout') {
+                  if (path === '/logout') {
+                    return (
+                      <button
+                        className={classNames(styles.logoutButton, {
+                          [styles.textNeutral]: !isActive,
+                          [styles.fontBold]: isActive,
+                        })}
+                        key={path}
+                        onClick={onClick}
+                      >
+                        {name}
+                      </button>
+                    );
+                  }
+
                   return (
-                    <button
-                      className={classNames(styles.logoutButton, {
+                    <Link
+                      key={path}
+                      href={path}
+                      className={classNames(styles.navigationItem, {
                         [styles.textNeutral]: !isActive,
                         [styles.fontBold]: isActive,
                       })}
-                      key={path}
-                      onClick={onClick}
                     >
-                      {name}
-                    </button>
+                      <span className={styles.linkName}>{name}</span>
+                    </Link>
                   );
-                }
-  
-                return (
-                  <Link
-                    key={path}
-                    href={path}
-                    className={classNames(styles.navigationItem, {
-                      [styles.textNeutral]: !isActive,
-                      [styles.fontBold]: isActive,
-                    })}
-                  >
-                    <span className={styles.linkName}>
-                      
-                      {name}
-                    </span>
-                  </Link>
-                );
-              })}
+                },
+              )}
             </ul>
           )}
         </div>
