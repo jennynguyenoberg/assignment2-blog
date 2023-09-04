@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import Heading from '@components/heading';
 import styles from './blog.module.css';
 import Link from 'next/link';
-import { Puff } from 'react-loader-spinner'
+import { Puff } from 'react-loader-spinner';
 
 export default function Blog() {
   const { data, error } = useSWR(postsCacheKey, getPosts);
@@ -44,7 +44,7 @@ export default function Blog() {
         />
         <p>Loading...</p>
       </div>
-    )
+    );
   }
 
   return (
