@@ -1,5 +1,5 @@
 .container {
-  /* margin: 0 9.5rem; */
+  margin: 0 9.5rem;
   min-height: 100%;
 }
 
@@ -11,12 +11,6 @@
     transition-timing-function: ease-in-out;
   }
 }*/
-
-@media (max-width: 1920px) {
-  .container {
-    margin: 0 2.5rem;
-  }
-}
 
 /* .container {
   -webkit-font-smoothing: antialiased;

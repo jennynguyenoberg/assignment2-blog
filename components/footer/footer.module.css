@@ -3,8 +3,9 @@
   position: relative;
   bottom: 0;
   width: 100%;
-  padding: 15px;
+  padding: 12px 19px 12px 0px;
   text-align: right;
   font-size: 12px;
-  margin-left: 35px;
+  color: #4f576c;
+  border-top: 1px solid #ececed;
 }
