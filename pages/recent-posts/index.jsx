@@ -20,7 +20,7 @@ export default function RecentPosts() {
           className={styles.link}
           href={`/blog/${post.slug}`}
         >
-          <div className="w-full flex flex-col">
+          <div className={styles.post}>
             <p>{post.title}</p>
             <time className={styles.date}>{post.created_at}</time>
           </div>

@@ -15,7 +15,7 @@
 
 .logoContainer:hover {
   animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    both;
+  both;
 }
 
 .menuContainer {
@@ -27,7 +27,6 @@
 
 .navbar.open .navbar-items {
   opacity: 1;
-  cursor: pointer;
 }
 
 .navbar-items li {
@@ -53,7 +52,6 @@
   border: none;
   font: inherit;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 /* --- Hamburger menu --- */

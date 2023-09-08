@@ -6,6 +6,23 @@
   padding: 0 10%;
 }
 
+.searchBar {
+  border: none;
+  border: 1px solid #cecece;
+  border-radius: 20px;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+}
+
+.post {
+  color: black;
+}
+
+.date {
+  font-size: .8rem;
+  color: black;
+}
+
 @media screen and (max-width: 1096px) {
   .container {
     padding: 0 10%;

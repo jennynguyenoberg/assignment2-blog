@@ -72,7 +72,7 @@ export default function BlogPost() {
   return (
     <>
       <section className={styles.container}>
-        <button onClick={handleGoBack}>Go Back to Blog</button>
+        <button className={styles.backButton} onClick={handleGoBack}>Go Back to Blog</button>
         <Heading>{post.title}</Heading>
         {post?.image && <BlogImageBanner src={post.image} alt={post.title} />}
         <div className={styles.dateContainer}>
@@ -86,15 +86,15 @@ export default function BlogPost() {
         <span className={styles.author}>Author: {post.author}</span>
 
         {/* The Delete & Edit part should only be showed if you are authenticated and you are the author */}
-        <div className={styles.buttonContainer}>
+        <div>
           <Button onClick={handleDeletePost}>Delete</Button>
           <Button onClick={handleEditPost}>Edit</Button>
         </div>
 
-      <Comments postId={post.id} />
+        <Comments postId={post.id} />
 
-      {/* This component should only be displayed if a user is authenticated */}
-      <AddComment postId={post.id} />
+        {/* This component should only be displayed if a user is authenticated */}
+        <AddComment postId={post.id} />
       </section>
       <div className={styles.subContainer}>
         <RecentPosts />

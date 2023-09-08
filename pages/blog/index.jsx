@@ -5,6 +5,7 @@ import Heading from '@components/heading';
 import styles from './blog.module.css';
 import Link from 'next/link';
 import { ThreeDots } from 'react-loader-spinner';
+import Button from '@components/button';
 
 export default function Blog() {
   const { data, error } = useSWR(postsCacheKey, getPosts);
@@ -51,6 +52,7 @@ export default function Blog() {
     <section className={styles.container}>
       <Heading>All Articles</Heading>
       <input
+        className={styles.searchBar}
         type="text"
         placeholder="Search by title"
         value={searchQuery}
@@ -59,10 +61,9 @@ export default function Blog() {
       {displayData.map((post) => (
         <Link
           key={post.slug}
-          className={styles.link}
           href={`/blog/${post.slug}`}
         >
-          <div className="w-full flex flex-col">
+          <div className={styles.post}>
             <p>{post.title}</p>
             <time className={styles.date}>{post.created_at}</time>
           </div>
@@ -71,9 +72,9 @@ export default function Blog() {
       {filteredDisplayData.length > 6 && (
         <div>
           {showAll ? (
-            <button onClick={() => setShowAll(false)}>Show Less</button>
+            <Button onClick={() => setShowAll(false)}>Show Less</Button>
           ) : (
-            <button onClick={() => setShowAll(true)}>Show More</button>
+            <Button onClick={() => setShowAll(true)}>Show More</Button>
           )}
         </div>
       )}

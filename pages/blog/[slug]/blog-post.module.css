@@ -11,6 +11,45 @@
   padding: 0 10%;
 }
 
+.author {
+  margin: 20px 0;
+  display: block;
+  font-size: 14px;
+}
+
+.dateContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.postBody p code {
+  background-color: transparent;
+  font-family: 'Fira';
+  font-size: 14px;
+  color: #4654a5;
+}
+
+.postBody p {
+  color: #616161;
+}
+
+.backButton {
+  border: none;
+  text-align: left;
+  padding: 0;
+  background: transparent;
+  margin-bottom: 40px;
+  letter-spacing: .15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 1096px) {
   .container, 
   .subContainer {

@@ -1,6 +1,15 @@
 .container {
 }
 
+.post {
+  color: black;
+}
+
+.date {
+  color: black;
+  font-size: .8rem;
+}
+
 /* .container {
   padding-bottom: 40px;
   border-bottom: 1px solid #ccc;
