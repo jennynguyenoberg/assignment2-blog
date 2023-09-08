@@ -27,7 +27,7 @@ export default function Sidebar() {
       name: 'About',
     },
     '/blog': {
-      name: 'Blog',
+      name: 'Articles',
     },
     '/create-post': {
       name: 'Create post',
