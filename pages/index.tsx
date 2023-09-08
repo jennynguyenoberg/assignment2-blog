@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <>
-      <Heading>Home</Heading>
+      <Heading>{`Welcome to my blog. I'm Jenny, and this is where I channel my passion for programming and design. Here is where you'll find my latest experiments and insights neatly documented.`}</Heading>
       {loading ? ( // Render the loader while data is loading
         <ThreeDots
           height="80"

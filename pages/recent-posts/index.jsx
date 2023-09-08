@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './recentPosts.module.css';
-import Heading from '@components/heading';
+import Subheading from '@components/subheading';
 
 import useSWR from 'swr';
 import { getPosts, postsCacheKey } from '../../api-routes/posts';
@@ -13,7 +13,7 @@ export default function RecentPosts() {
 
   return (
     <section>
-      <Heading>Recent Articles</Heading>
+      <Subheading>Recent Articles</Subheading>
       {lastThreePosts.map((post) => (
         <Link
           key={post.slug}
