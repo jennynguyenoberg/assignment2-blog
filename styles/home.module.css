@@ -3,4 +3,32 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 10%;
+}
+
+.subContainer {
+  margin: 5% 0;
+}
+
+@media screen and (max-width: 1096px) {
+  .container,
+  .subContainer {
+    padding: 0 0%;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+  .container,
+  .subContainer {
+    padding: 0 0%;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  .container,
+  .subContainer {
+    padding: 0 0%;
+  }
 }

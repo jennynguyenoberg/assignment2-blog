@@ -85,13 +85,15 @@ export default function BlogPost() {
           <Button onClick={handleDeletePost}>Delete</Button>
           <Button onClick={handleEditPost}>Edit</Button>
         </div>
-      </section>
 
       <Comments postId={post.id} />
 
       {/* This component should only be displayed if a user is authenticated */}
       <AddComment postId={post.id} />
-      <RecentPosts />
+      </section>
+      <div className={styles.subContainer}>
+        <RecentPosts />
+      </div>
     </>
   );
 }

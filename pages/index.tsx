@@ -19,20 +19,22 @@ export default function Home() {
     <>
       <main className={styles.container}>
         <Heading>{`Welcome to my blog. I'm Jenny, and this is where I channel my passion for programming and design. Here is where you'll find my latest experiments and insights neatly documented.`}</Heading>
+      <div className={styles.subContainer}>
         {loading ? ( // Render the loader while data is loading
           <ThreeDots
           height="80"
-            width="80"
-            radius={1}
-            color="#cecece"
-            ariaLabel="puff-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            />
-            ) : (
-              <RecentPosts />
-              )}
+          width="80"
+          radius={1}
+          color="#cecece"
+          ariaLabel="puff-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          />
+          ) : (
+            <RecentPosts />
+            )}
+        </div>
       </main>
     </>
   );
