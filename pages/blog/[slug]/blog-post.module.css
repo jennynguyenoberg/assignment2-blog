@@ -41,7 +41,7 @@
   padding: 0;
   background: transparent;
   margin-bottom: 40px;
-  letter-spacing: .15px;
+  letter-spacing: 0.15px;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -51,21 +51,21 @@
 }
 
 @media screen and (max-width: 1096px) {
-  .container, 
+  .container,
   .subContainer {
     padding: 0 1%;
   }
 }
 
 @media screen and (max-width: 992px) {
-  .container, 
+  .container,
   .subContainer {
     padding: 0 0%;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .container, 
+  .container,
   .subContainer {
     padding: 0 0%;
   }
