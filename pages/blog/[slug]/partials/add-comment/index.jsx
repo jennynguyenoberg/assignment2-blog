@@ -36,7 +36,7 @@ export default function AddComment({ postId }) {
 
   return (
     <div className={styles.container}>
-      <h2>Add a comment</h2>
+      <h4>Add a comment</h4>
       <form ref={formRef} className={styles.form} onSubmit={handleOnSubmit}>
         <div className={styles.inputContainer}>
           <Label htmlFor="author">Author</Label>

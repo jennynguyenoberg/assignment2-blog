@@ -46,6 +46,9 @@ export default function BlogPost() {
     router.push('/blog'); // This will navigate to the /blog page
   };
 
+  const isLoggedIn = true; // Set to true if the user is authenticated
+  const isAuthor = isLoggedIn && post.author === 'currentUser';
+
   if (isValidating) {
     return (
       <div className={styles.loader}>
@@ -72,29 +75,30 @@ export default function BlogPost() {
   return (
     <>
       <section className={styles.container}>
-        <button className={styles.backButton} onClick={handleGoBack}>Go Back to Blog</button>
+        <button className={styles.backButton} onClick={handleGoBack}>
+          Go Back to Blog
+        </button>
         <Heading>{post.title}</Heading>
-        {post?.image && <BlogImageBanner src={post.image} alt={post.title} />}
         <div className={styles.dateContainer}>
           <time className={styles.date}>{post.created_at}</time>
           <div className={styles.border} />
         </div>
+        {post?.image && <BlogImageBanner src={post.image} alt={post.title} />}
         <div
           className={styles.postBody}
           dangerouslySetInnerHTML={{ __html: post.body }}
         />
         <span className={styles.author}>Author: {post.author}</span>
-
-        {/* The Delete & Edit part should only be showed if you are authenticated and you are the author */}
-        <div>
-          <Button onClick={handleDeletePost}>Delete</Button>
-          <Button onClick={handleEditPost}>Edit</Button>
-        </div>
+        {isLoggedIn && isAuthor && (
+          <div>
+            <Button onClick={handleDeletePost}>Delete</Button>
+            <Button onClick={handleEditPost}>Edit</Button>
+          </div>
+        )}
 
         <Comments postId={post.id} />
 
-        {/* This component should only be displayed if a user is authenticated */}
-        <AddComment postId={post.id} />
+        {isLoggedIn && <AddComment postId={post.id} />}
       </section>
       <div className={styles.subContainer}>
         <RecentPosts />
