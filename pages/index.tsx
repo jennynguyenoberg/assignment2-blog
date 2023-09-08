@@ -1,6 +1,6 @@
 import Heading from '@components/heading';
 import RecentPosts from '@/pages/recent-posts';
-import { Puff } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Heading>Home</Heading>
       {loading ? ( // Render the loader while data is loading
-        <Puff
+        <ThreeDots
           height="80"
           width="80"
           radius={1}

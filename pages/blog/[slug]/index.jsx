@@ -6,7 +6,7 @@ import Button from '@components/button';
 import Heading from '@components/heading';
 import BlogImageBanner from '@components/blog-image-banner';
 import RecentPosts from '../../recent-posts';
-import { Puff } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -45,7 +45,7 @@ export default function BlogPost() {
   if (isValidating) {
     return (
       <div className={styles.loader}>
-        <Puff
+        <ThreeDots
           height="80"
           width="80"
           radius={1}

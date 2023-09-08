@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import Heading from '@components/heading';
 import styles from './blog.module.css';
 import Link from 'next/link';
-import { Puff } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function Blog() {
   const { data, error } = useSWR(postsCacheKey, getPosts);
@@ -32,7 +32,7 @@ export default function Blog() {
   if (!data) {
     return (
       <div className={styles.loader}>
-        <Puff
+        <ThreeDots
           height="80"
           width="80"
           radius={1}
