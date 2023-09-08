@@ -48,7 +48,7 @@ export default function Blog() {
   }
 
   return (
-    <section>
+    <section className={styles.container}>
       <Heading>All Articles</Heading>
       <input
         type="text"
